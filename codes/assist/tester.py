@@ -2,7 +2,7 @@ import time
 import string
 import assist.rand_func as rand_func
 
-def tester_rand_rep(func,rep,sample):
+def tester_rand_rep(func,sample,rep):
     time_lst = []
    
     for i in range(rep):
