@@ -17,13 +17,13 @@ def exchangesort(s):
     return s
 
 #main
-arr1 = assist.rand_func.rand_num_list(21, 0, 20)
+arr1 = assist.rand_func.rand_num_list(21,0)
 loc = seqsearch(arr1, 20)
 print("Sequence Search")
 print(arr1)
 print(loc)
 
-arr2 = assist.rand_func.rand_num_list(10, 0, 100)
+arr2 = assist.rand_func.rand_num_list(10,0)
 print("Exchange Sort")
 print(arr2)
 print(exchangesort(arr2))
