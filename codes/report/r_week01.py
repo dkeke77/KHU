@@ -37,7 +37,8 @@ def merge_sort(arr):
     
     return result
 
-sample = 100
+sample = 20000
 
-print("selection sort : " + tester.tester_rand_rep(sel_sort,sample,3))
-print("merge sort     : " + tester.tester_rand_rep(merge_sort,sample,3))
+print("CASE -",sample)
+print("selection sort : " + tester.tester_rand_rep_du(sel_sort,sample,3))
+print("merge sort     : " + tester.tester_rand_rep_du(merge_sort,sample,3))
