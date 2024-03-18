@@ -1,7 +1,5 @@
 import time
-import string
-import assist.rand_func as rand_func
-
+from assist import rand_func
 def tester_rand_rep(func,sample,rep):
     time_lst = []
    
