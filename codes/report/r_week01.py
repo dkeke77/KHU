@@ -37,8 +37,14 @@ def merge_sort(arr):
     
     return result
 
-sample = 20000
 
-print("CASE -",sample)
-print("selection sort : " + tester.tester_rand_rep_du(sel_sort,sample,3))
-print("merge sort     : " + tester.tester_rand_rep_du(merge_sort,sample,3))
+#sample = [5000,10000,15000,20000,30000,40000,80000]
+
+#for i in range(0,6):   
+#    print("CASE -",sample[i])
+#    print("selection sort : " + tester.tester_rand_rep_du(sel_sort,sample[i],5))
+#    print("merge sort     : " + tester.tester_rand_rep_du(merge_sort,sample[i],20))
+#    print("")
+
+#print("CASE -",sample[6])
+#print("merge sort     : " + tester.tester_rand_rep_du(merge_sort,sample[6],20))
