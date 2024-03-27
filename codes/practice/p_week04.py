@@ -2,17 +2,29 @@ import numpy as np
 
 def strassen(n, A, B, C):
     if(n<=2):
-        return np.array(A)@np.array(B)
+        C = np.array(A)@np.array(B)
     else:
-        n /= 2
-        A_sub,B_sub=[],[]
-        A_sub1=np.split(A,2,axis=1).shape
-        B_sub1=np.split(B,2,axis=1).shape
-        for i in range(n):
-            A_sub.extend(np.split(A_sub1[i],2,axis=0))
-            B_sub.extend(np.split(B_sub1[i],2,axis=0))
-        print(A_sub)
-    return 0
+        A_sp = []
+        B_sp = []
+        half = n//2
+
+        for i in range(2):
+            for j in range(2):
+                A_sp.append(np.array([[A[rows][cols] for cols in range(half*j,half*(j+1))]for rows in range(half*i,half*(i+1))]))
+                B_sp.append(np.array([[B[rows][cols] for cols in range(half*j,half*(j+1))]for rows in range(half*i,half*(i+1))]))
+        
+        M1 = M2 = M3 = M4 = M5 = M6 = M7 = np.array([])
+        M1 = strassen(half, A_sp[0]+A_sp[3], B_sp[0]+B_sp[3], M1)
+        M2 = strassen(half, A_sp[2]+A_sp[3], B_sp[0], M2)
+        M3 = strassen(half, A_sp[0], B_sp[1]-B_sp[3], M3)
+        M4 = strassen(half, A_sp[3], B_sp[2]-B_sp[0], M4)
+        M5 = strassen(half, A_sp[0]+A_sp[1], B_sp[3], M5)
+        M6 = strassen(half, A_sp[2]-A_sp[0], B_sp[0]+B_sp[1], M6)
+        M7 = strassen(half, A_sp[1]-A_sp[3], B_sp[2]+B_sp[3], M7)
+
+        C = np.vstack([ np.hstack([M1+M4-M5+M7, M3+M5]), np.hstack([M2+M4, M1+M3-M2+M6]) ])
+    
+    return C
 
 def quickSort(s, low, high):
     if (low < high-1):
@@ -44,6 +56,7 @@ n=4
 A=[ [1,2,0,2], [3,1,0,0], [0,1,1,2], [2,0,2,0] ]
 B=[ [0,3,0,2], [1,1,4,0], [1,1,0,2], [0,5,2,0] ]
 C=np.array(A)@np.array(B)
-D=[ [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0] ]
+D = np.array([[0 for cols in range(n)]for rows in range(n)])
 print(C)
-#strassen(n,A,B,D)
+D = strassen(n,A,B,D)
+print(D)
