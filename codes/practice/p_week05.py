@@ -22,7 +22,7 @@ def bin2(n,k):
     return arr[n][k]
 
 t1 = time.time()
-print(bin(10,5) end="")
+print(bin(10,5), end=" ")
 t1 = (time.time() - t1)*1000
 
 t2 = time.time()
