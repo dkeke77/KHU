@@ -48,7 +48,29 @@ def printMatrix(d):
             print(d[i][j],end=" ")
         print()
 
+def minmult(d, n):
+    m = [[0 for j in range(1,n+2)] for i in range(1,n+2)]
+    p = [[0 for j in range(1,n+2)] for i in range(1,n+2)]
 
+    for diagonal in range(1,n):
+        for i in range(1,n-diagonal+1):
+            j = diagonal+i
+            for k in range(i,j):
+                new = m[i][k]+m[k+1][j]+d[i-1]*d[k]*d[j]
+                if m[i][j] > new or m[i][j] == 0:
+                    m[i][j] = new
+                    p[i][j] = k
+
+    return m, p
+
+def order(p,i,j):
+    if i == j:
+        print("A{0}".format(i), end="")
+    else:
+        print("(",end="")
+        order(p,i,p[i][j])
+        order(p,p[i][j]+1,j)
+        print(")",end="")
 
 # binomial coefficient
 t1 = time.time()
@@ -61,7 +83,8 @@ t2 = (time.time() - t2)*1000
 
 #print("{0:0.2f}ms {1:0.2f}ms".format(t1, t2))
 
-# floyd
+# Floyd
+print("Floyd Algorithm")
 inf=1000
 g=[[0,1,inf, 1,5],
     [9,0,3,2,inf],
@@ -75,3 +98,15 @@ printMatrix(d)
 print()
 printMatrix(p)
 path(p, 5, 3)
+print("\n\n")
+
+#Minimum Multiplication
+print("Minimum Multiplication")
+d=[5,2,3,4,6,7,8]
+n=len(d)-1
+
+m,p = minmult(d,n)
+util.printMatrix(m)
+print()
+util.printMatrix(p)
+order(p,1,6)
