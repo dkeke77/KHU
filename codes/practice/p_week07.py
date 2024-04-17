@@ -1,7 +1,7 @@
 import utility
 
 #Prim's Algorithm
-print(" ==== Prim's Algorithm ==== ")
+print(" ==== Prim's  Algorithm ==== ")
 inf = 1000
 w = [[0, 1, 3,inf, inf],
     [1, 0, 3,6, inf],
@@ -19,6 +19,7 @@ for i in range(1,n):
     nearest[i] = 0
     distance[i] = w[0][i]
 
+# Prim 알고리즘 구현
 for i in range(1,n):
     min = inf
     vnear = 0
@@ -28,8 +29,8 @@ for i in range(1,n):
             min = distance[j]
             vnear = j
 
-    edge = (vnear, nearest[vnear])
-    F.add(edge)
+    e = (vnear, nearest[vnear])
+    F.add(e)
     distance[vnear] = -1;
 
     for j in range(1,n):
@@ -101,3 +102,4 @@ graph = {
 
 mst=kruskal(graph)
 print(mst)
+
