@@ -1,4 +1,4 @@
-# Dijkstra 알고리즘 출력용 함수
+# Dijkstra 알고리즘 결과 출력용 함수
 def convert_node_name(num):
     return chr(97+num)
 
@@ -63,5 +63,5 @@ for i in range(1,n):
     if save_length[node_near] > save_length[i]:
         node_near = i
 
-print(" 최단 거리 노드 :",convert_node_name(node_near))
-print(" 최장 거리 노드 :",convert_node_name(node_far))
+print(" 최단 거리 노드 : {0}({1})".format(convert_node_name(node_near),save_length[node_near]))
+print(" 최장 거리 노드 : {0}({1})".format(convert_node_name(node_far),save_length[node_far]))
